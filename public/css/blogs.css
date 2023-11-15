@@ -22,3 +22,17 @@
     color: gray;
     font-size: x-small;
 }
+
+.edit__icon {
+    cursor: pointer;
+    width: 24px;
+}
+
+.edit__icon:active {
+    transform: scale(0.93);
+}
+
+#noBlogText {
+    color: gray;
+    text-align: center;
+}
