@@ -1,0 +1,30 @@
+.new__form__container {
+    display: flex;
+    flex-flow: column;
+    height: 100vh;
+}
+
+.new__form {
+    display: flex;
+    flex-flow: column;
+    gap: 16px;
+    padding: 16px;
+    flex: 1;
+}
+
+.new__form :is(input, textarea) {
+    height: 40px;
+    padding: 8px;
+    outline: none;
+    border: 1px solid #333;
+}
+
+.new__form textarea {
+    height: 100%;
+    resize: none;
+}
+
+.new__form :is(input, textarea):focus {
+    border-width: 2px;
+    padding: 7.5px;
+}

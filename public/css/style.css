@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    position: relative;
+    display: block;
+}
+
+.nav {
+    background-color: #333;
+    color: white;
+    padding: 8px 16px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+}
+
+.nav button {
+    padding: 8px;
+    border: none;
+    background-color: aquamarine;
+    color: #333;
+}
+
+.nav button:hover {
+    cursor: pointer;
+}
+
+.nav button:active {
+    transform: scale(0.99);
+}
+
+.nav .cancel__btn {
+    background-color: beige;
+}
+
+.nav .cancel__btn:hover {
+    background-color: red;
+    color: white;
+}
