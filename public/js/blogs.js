@@ -33,17 +33,36 @@ newBtn.addEventListener("click", () => {
                 blogTime.innerText = new Date(blogData.createdAt).toLocaleString();
                 titleContainer.appendChild(blogTime);
 
+                const iconContainer = document.createElement("div");
+                blogHeader.appendChild(iconContainer);
+
                 const editIcon = document.createElement("img");
                 editIcon.src = "../public/assets/edit-icon.svg"; 
                 editIcon.alt="edit" 
-                editIcon.classList.add("edit__icon")
-                blogHeader.appendChild(editIcon)
+                editIcon.classList.add("blog__icon")
+                iconContainer.appendChild(editIcon)
+
+                const trashIcon = document.createElement("img");
+                trashIcon.src = "../public/assets/trash-icon.svg"; 
+                trashIcon.alt="delete"
+                trashIcon.classList.add("blog__icon")
+                iconContainer.appendChild(trashIcon)
 
                 const blogBody = document.createElement("p");
                 blogBody.classList.add("blog__body");
                 // intentionally introduced an XSS vulnerability
                 blogBody.innerHTML = blogData.body;
                 blog.appendChild(blogBody);
+
+                trashIcon.addEventListener("click", () => {
+                    fetch(`/blog/${blogData._id}`, {
+                        method: "DELETE"
+                    }).then(res => {
+                        if (res.status === 200) {
+                            blog.remove();
+                        }
+                    });
+                });
             });
         }
     } catch (error) {
