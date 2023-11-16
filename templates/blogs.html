@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seng Blog</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/blogs.css">
+    <script src="../static/js/blogs.js" async></script>
+</head>
+<body>
+    <nav class="nav">
+        <h5>SENG BLOG</h5>
+        <button id="newBtn">CREATE NEW BLOG</button>
+    </nav>
+    <div class="blog__container" id="blogContainer">
+        {% for blog in blogs %}
+            <div class="blog">
+                <div class="blog__header">
+                    <div>
+                        <h4>{{ blog.title }}</h4>
+                        <!-- Add a small tag for timestamp if available in your blog document -->
+                        {% if blog.timestamp %}
+                            <small>{{ blog.timestamp }}</small>
+                        {% endif %}
+                    </div>
+                    <!-- Add your edit and delete icons here if needed -->
+                </div>
+                <p>{{ blog.body }}</p>
+            </div>
+        {% else %}
+            <!-- Show this message if no blogs are available -->
+            <div id="noBlogText">
+                No blogs have been posted.
+            </div>
+        {% endfor %}
+    </div>
+    <footer class="footer">
+        <p>You can support us by dropping a donation.</p>
+        <a href="{{ url_for('support_page') }}">Support us</a>
+    </footer>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seng Blog</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/blogs.css">
+    <script src="../static/js/blogs.js" async></script>
+</head>
+<body>
+    <nav class="nav">
+        <h5>SENG BLOG</h5>
+        <button id="newBtn">CREATE NEW BLOG</button>
+    </nav>
+    <div class="blog__container" id="blogContainer">
+        <div id="noBlogText">
+            No blogs have been posted.
+        </div>
+    </div>
+    <footer class="footer">
+        <p>You can support us by dropping a donation.</p>
+        <a href="{{ url_for('support_page') }}">Support us</a>
+    </footer>
+</body>
+</html> -->
+
+<!-- 
+    <div class="blog">
+        <div class="blog__header">
+            <div>
+                <h4>My first post</h4>
+                <small>12:45 PM</small>
+            </div>
+            <div>
+                <img src="../static/assets/edit-icon.svg" alt="edit" class="blog__icon" />
+                <img src="../static/assets/trash-icon.svg" alt="delete" class="blog__icon" />
+            </div>
+        </div>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis ullam commodi culpa architecto dignissimos, numquam tempore quibusdam eaque? Nisi culpa sapiente quibusdam consequatur facilis repellendus. Labore aperiam voluptate soluta quo.</p>
+    </div>
+ -->
