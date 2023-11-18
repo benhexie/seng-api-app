@@ -31,7 +31,9 @@ newBtn.addEventListener("click", () => {
                 titleContainer.appendChild(blogTitle);
 
                 const blogTime = document.createElement("small");
-                blogTime.innerText = new Date(blogData.createdAt).toLocaleString();
+                // remove the milliseconds from the date string
+                blogTime.innerText = new Date(blogData.createdAt).toLocaleString()
+                    .replace(/:\d{2}\s/, " ");
                 titleContainer.appendChild(blogTime);
 
                 const iconContainer = document.createElement("div");
@@ -39,8 +41,11 @@ newBtn.addEventListener("click", () => {
 
                 const editIcon = document.createElement("img");
                 editIcon.src = "../static/assets/edit-icon.svg"; 
-                editIcon.alt="edit" 
+                editIcon.alt="edit"
                 editIcon.classList.add("blog__icon")
+                editIcon.addEventListener("click", () => {
+                    location.href = `/blog/${blogData._id}`;
+                });
                 iconContainer.appendChild(editIcon)
 
                 const trashIcon = document.createElement("img");
@@ -61,12 +66,15 @@ newBtn.addEventListener("click", () => {
                     }).then(res => {
                         if (res.status === 200) {
                             blog.remove();
+                            if (!blogContainer.children.length) {
+                                blogContainer.appendChild(noBlogText);
+                            }
                         }
                     });
                 });
             });
         }
     } catch (error) {
-        
+        console.log(error.message);
     }
 })();
