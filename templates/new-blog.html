@@ -6,30 +6,44 @@
     <title>Seng Blog | Create new blog</title>
     <link rel="stylesheet" href="../static/css/style.css">
     <link rel="stylesheet" href="../static/css/new-blog.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <script src="../static/js/new-blog.js" async></script>
 </head>
 <body>
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-        <ul class="flashes">
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-{% endwith %}
-
-    <form id="blogForm" class="new__form__container" method="POST", action="{{url_for('add_blog')}}">
+    <form 
+        id="blogForm" 
+        class="new__form__container"
+        data-blog-id="{% if (blog) %}{{blog._id}}{% endif %}"
+    >
         <nav class="nav">
             <h5>SENG BLOG</h5>
             <div>
-                <button class="cancel__btn" id="cancelBtn">CANCEL</button>
-                <button type="submit" id="saveBtn">SAVE BLOG</button>
+                <button type="button" class="cancel__btn" id="cancelBtn">CANCEL</button>
+                <button 
+                    type="submit"
+                    {% if (blog) %}id="updateBtn"{% else %}id="saveBtn"{% endif %}
+                >
+                    {% if (blog) %}UPDATE{% else %}SAVE{% endif %}
+                </button>
             </div>
         </nav>
         <div class="new__form">
-            <input autofocus required type="text" id="blogTitle" placeholder="Title">
-            <textarea required id="blogBody" placeholder="Your write-up goes here..."></textarea>
+            <input 
+                autofocus 
+                required 
+                type="text" 
+                id="blogTitle" 
+                placeholder="Title"
+                {% if (blog) %}
+                    value={{blog.title}}
+                {% endif %}
+            />
+            <textarea 
+                required 
+                id="blogBody" 
+                placeholder="Your write-up goes here..."
+            >{% if (blog) %}{{blog.body}}{% endif %}</textarea>
         </div>
     </form>
 </body>

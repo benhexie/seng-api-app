@@ -14,26 +14,10 @@
         <button id="newBtn">CREATE NEW BLOG</button>
     </nav>
     <div class="blog__container" id="blogContainer">
-        {% for blog in blogs %}
-            <div class="blog">
-                <div class="blog__header">
-                    <div>
-                        <h4>{{ blog.title }}</h4>
-                        <!-- Add a small tag for timestamp if available in your blog document -->
-                        {% if blog.timestamp %}
-                            <small>{{ blog.timestamp }}</small>
-                        {% endif %}
-                    </div>
-                    <!-- Add your edit and delete icons here if needed -->
-                </div>
-                <p>{{ blog.body }}</p>
-            </div>
-        {% else %}
-            <!-- Show this message if no blogs are available -->
-            <div id="noBlogText">
-                No blogs have been posted.
-            </div>
-        {% endfor %}
+        <!-- Show this message if no blogs are available -->
+        <div id="noBlogText">
+            No blogs have been posted.
+        </div>
     </div>
     <footer class="footer">
         <p>You can support us by dropping a donation.</p>
